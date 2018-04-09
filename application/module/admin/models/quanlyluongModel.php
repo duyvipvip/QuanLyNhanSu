@@ -17,5 +17,12 @@ class quanlyluongModel{
     function laymotthuongluong($url){
         return json_decode(file_get_contents($url));
     }
+
+    function laymotphatluong($url){
+        return json_decode(file_get_contents($url));
+    }
+    function laymottamung($url){
+        return json_decode(file_get_contents($url));
+    }
 }
 ?>

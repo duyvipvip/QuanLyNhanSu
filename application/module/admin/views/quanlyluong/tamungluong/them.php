@@ -8,7 +8,7 @@
     <h3>Thêm thưởng lương</h3>
     <div class="validation-grids widget-shadow" data-example-id="basic-forms"> 
         <div class="form-body form-body-info">
-            <form action="<?php echo url::createLink('admin', 'quanlyluong', 'themthuongluong')?>" method="post" data-toggle="validator" novalidate="true">
+            <form action="<?php echo url::createLink('admin', 'quanlyluong', 'themtamung')?>" method="post" data-toggle="validator" novalidate="true">
                 <div class="col-md-6">
                     <div class="form-group valid-form">
                         <label for="">Tên nhân viên: </label>
@@ -19,25 +19,21 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Tháng thưởng: </label>
-                        <input name="thangthuong" type="number" class="form-control"  placeholder="Tháng thưởng" required="">
+                        <label for="">Ngày tạm ứng: </label>
+                        <input name="ngaytamung" type="Date" class="form-control"  placeholder="Ngày tạm ứng" required="">
                     </div>
                     <div class="form-group">
-                        <label for="">Ngày thưởng: </label>
-                        <input name="ngaythuong" type="Date" class="form-control"  placeholder="Ngày thưởng" required="">
+                        <label for="">Mức tạm ứng: </label>
+                        <input name="sotientamung" type="number" class="form-control"  placeholder="Mức tạm ứng" required="">
                     </div>
                     <div class="form-group">
-                        <label for="">Mức thưởng: </label>
-                        <input name="sotienthuong" type="number" class="form-control"  placeholder="Mức thưởng" required="">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Nội dung thưởng: </label>
-                        <textarea name="lydothuong"  required="" placeholder="Nội dung thưởng" class="form-control at-required"></textarea>
+                        <label for="">Nội dung tạm ứng: </label>
+                        <textarea name="lydotamung"  required="" placeholder="Nội dung tạm ứng" class="form-control at-required"></textarea>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary disabled">Thêm nhân viên được thưởng</button>
+                    <button type="submit" class="btn btn-primary disabled">Thêm nhân viên được tạm ứng</button>
                 </div>
             </form>
         </div>

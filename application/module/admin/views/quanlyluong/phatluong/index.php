@@ -4,25 +4,25 @@
         // TẠO HTML DANH SACH NHAN VIÊN
         $xhtmlDanhSachNhanVien = '';
         foreach ($danhSachNhanVien as $key => $nhanvien) {
-            if($nhanvien->thuongluongs != null){
-                foreach ($nhanvien->thuongluongs as $key => $thuongluong) {
+            if($nhanvien->phatluongs != null){
+                foreach ($nhanvien->phatluongs as $key => $phatluong) {
                     $class = ($key % 2 == 0) ? '' : 'active';
-
-                    $thuongluong->ngaythuong = date("d-m-Y", strtotime($thuongluong->ngaythuong));
+                    $phatluong->ngayphat = date("d-m-Y", strtotime($phatluong->ngayphat));
                     $nhanvien->ngaysinh = date("d-m-Y", strtotime($nhanvien->ngaysinh));
 
-                    $urlEdit = url::createLink('admin', 'quanlyluong', 'chinhsuathuongluong',
-                                                array('idnhanvien' => $nhanvien->_id, 'idthuongluong'=> $thuongluong->_id));
-                    $urlTrash = url::createLink('admin', 'quanlyluong', 'xoathuongluong', 
-                                                array('idnhanvien' => $nhanvien->_id, 'idthuongluong' => $thuongluong->_id));
-
+                    $urlEdit = url::createLink('admin', 'quanlyluong', 'chinhsuaphatluong',
+                                                array('idnhanvien' => $nhanvien->_id, 'idphatluong'=> $phatluong->_id));
+                    $urlTrash = url::createLink('admin', 'quanlyluong', 'xoaphatluong', 
+                                                array('idnhanvien' => $nhanvien->_id, 'idphatluong' => $phatluong->_id));
+                    
+                    $phatluong->sotienphat = number_format($phatluong->sotienphat);
                     $xhtmlDanhSachNhanVien .= " <div class='row'>
                         <p style='width: 20%'>$nhanvien->_id</p>
                         <p style='width: 20%'>$nhanvien->hoten</p>
                         <p style='width: 10%'>$nhanvien->ngaysinh</p>
-                        <p style='width: 10%'>$thuongluong->ngaythuong</p>
-                        <p style='width: 10%'>$thuongluong->sotienthuong</p>
-                        <p style='width: 10%'>$thuongluong->lydothuong</p>
+                        <p style='width: 10%'>$phatluong->ngayphat</p>
+                        <p style='width: 10%'>$phatluong->sotienphat</p>
+                        <p style='width: 10%'>$phatluong->lydophat</p>
                         <p>
                             <a href=$urlEdit>
                                 <i class='fa fa-edit'></i>
@@ -38,18 +38,16 @@
     }
     
 ?>
-  
 <div class="panel panel-widget">
-    <h3>Quản lý thưởng lương</h3>
-
+    <h3>Quản lý phạt lương</h3>
     <div style="width: 1000px;">
         <div class="list">
             <div class="row head" >
                 <p style="width: 20%">Mã nhân viên</p>
                 <p style='width: 20%'>Họ tên</p>
                 <p style='width: 10%'>Ngày sinh</p>
-                <p style='width: 10%'>Ngày thưởng</p>
-                <p style='width: 10%'>Tiền thưởng</p>
+                <p style='width: 10%'>Ngày phạt</p>
+                <p style='width: 10%'>Tiền phạt</p>
                 <p style='width: 10%'>Nội dung</p>
                 <p>Chức năng</p>
             </div>
@@ -57,5 +55,5 @@
         </div>
     </div>
 </div>
-<a href="<?php echo url::createLink('admin', 'quanlyluong', 'themthuongluong') ?>" class="btn btn-primary">Thêm nhân viên được thưởng</a>    
+<a href="<?php echo url::createLink('admin', 'quanlyluong', 'themphatluong') ?>" class="btn btn-primary">Thêm nhân viên bị phạt lương</a>    
 

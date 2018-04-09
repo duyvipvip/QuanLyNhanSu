@@ -18,7 +18,7 @@
                     <i class='fa fa-edit'></i>
                 </a>
                 <a href=$urlTrash>
-                    xoa
+                    <i class='fa fa-trash'></i>
                 </a>
             </p>
         </div>";

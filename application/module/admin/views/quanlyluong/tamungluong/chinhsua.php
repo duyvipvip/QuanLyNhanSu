@@ -1,16 +1,16 @@
 
 <?php
-    $this->thuongluong = $this->thuongluong[0];
+    $this->tamung = $this->tamung[0];
     
     $this->nhanvien->ngaysinh = date("Y-m-d", strtotime($this->nhanvien->ngaysinh));
-    $this->thuongluong->ngaythuong = date("Y-m-d", strtotime($this->thuongluong->ngaythuong));
+    $this->tamung->ngaytamung = date("Y-m-d", strtotime($this->tamung->ngaytamung));
 ?>
 <div class="panel panel-widget">
-    <h3>Chỉnh sửa thưởng lương</h3>
+    <h3>Chỉnh sửa tạm ứng lương</h3>
 
     <div class="validation-grids widget-shadow" data-example-id="basic-forms"> 
         <div class="form-body form-body-info">
-            <form action="<?php echo url::createLink('admin', 'quanlyluong', 'chinhsuathuongluong'); ?>" method="post" data-toggle="validator" novalidate="true" enctype="multipart/form-data">
+            <form action="<?php echo url::createLink('admin', 'quanlyluong', 'chinhsuatamung'); ?>" method="post" data-toggle="validator" novalidate="true" enctype="multipart/form-data">
                 <div class="col-md-6">
                     <div class="form-group valid-form">
                         <label for="">Mã nhân viên: </label>
@@ -43,19 +43,19 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group valid-form">
-                        <input type="hidden" name="idthuongluong" value='<?php echo $this->thuongluong->_id;?>' class="form-control"  placeholder="Mã nhân viên" required="">
+                        <input type="hidden" name="idtamung" value='<?php echo $this->tamung->_id;?>' class="form-control"  placeholder="Mã nhân viên" required="">
                     </div>
                     <div class="form-group">
-                        <label for="">Ngày thưởng: </label>
-                        <input value='<?php echo $this->thuongluong->ngaythuong;?>' name="ngaythuong" type="Date" class="form-control"  placeholder="Ngày thưởng" required="">
+                        <label for="">Ngày tạm ứng: </label>
+                        <input value='<?php echo $this->tamung->ngaytamung;?>' name="ngaytamung" type="Date" class="form-control"  placeholder="Ngày tạm ứng" required="">
                     </div>
                     <div class="form-group">
-                        <label for="">Mức thưởng: </label>
-                        <input value='<?php echo $this->thuongluong->sotienthuong;?>' name="sotienthuong" type="number" class="form-control"  placeholder="Mức thưởng" required="">
+                        <label for="">Mức tạm ứng: </label>
+                        <input value='<?php echo $this->tamung->sotientamung;?>' name="sotientamung" type="number" class="form-control"  placeholder="Mức tạm ứng" required="">
                     </div>
                     <div class="form-group">
-                        <label for="">Nội dung thưởng: </label>
-                        <textarea name="lydothuong" required="" class="form-control at-required" placeholder="Nội dung thưởng"><?php echo $this->thuongluong->lydothuong; ?></textarea>
+                        <label for="">Nội dung tạm ứng: </label>
+                        <textarea name="lydotamung" required="" class="form-control at-required" placeholder="Nội dung tạm ứng"><?php echo $this->tamung->lydotamung; ?></textarea>
                     </div>
                 </div>
                 

@@ -21,6 +21,14 @@ const nhanvienSchema = mongoose.Schema({
     thuongluongs: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'thuongluong'
-    }]
+    }],
+    phatluongs: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'phatluong'
+    }],
+    tamungs: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'tamungluong'
+    }],
 }, { collection: 'nhanvien'});
 module.exports = mongoose.model('nhanvien', nhanvienSchema);

@@ -15,6 +15,14 @@ function laytatcanhanvien(){
             path: 'thuongluongs',
             select: 'thangthuong ngaythuong sotienthuong lydothuong'
         })
+        .populate({
+            path: 'phatluongs',
+            select: 'thangphat ngayphat sotienphat lydophat'
+        })
+        .populate({
+            path: 'tamungs',
+            select: 'thangtamung ngaytamung sotientamung lydotamung'
+        })
         .then((nhanvien) => {
             return Promise.resolve(nhanvien);
         })

@@ -18,7 +18,7 @@ class quanlydulieuController extends Controller{
     /* PHẦN DÂN TỘC */
     function dantocAction(){
         // lấy tất cả các dân tộc
-        $url = "http://localhost:9000/api/dantoc/all";
+        $url = "http://localhost:3000/api/dantoc/all";
         $this->_view->danhsachdantoc = $this->_model->getAPI($url); 
         
         $this->_view->render('quanlydulieu/dantoc/index');
@@ -27,7 +27,7 @@ class quanlydulieuController extends Controller{
      function themdantocAction(){
         if($_POST){
             $data = $_POST;
-            $result = curl::POST('http://localhost:9000/api/dantoc/create', $data);
+            $result = curl::POST('http://localhost:3000/api/dantoc/create', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlydulieu', 'dantoc'));
             }else{
@@ -45,7 +45,7 @@ class quanlydulieuController extends Controller{
             $data = array(
                 "idc$idchucvu" => $idchucvu
             );
-            $result = curl::POST('http://localhost:9000/api/dantoc/delete', $data);
+            $result = curl::POST('http://localhost:3000/api/dantoc/delete', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlydulieu', 'dantoc'));
             }else{
@@ -63,7 +63,7 @@ class quanlydulieuController extends Controller{
                 'iddantoc'=> $_POST['iddantoc'],
                 'tenchucvu'=> $_POST['tenchucvu'],
             );
-            $result = curl::POST('http://localhost:9000/api/dantoc/update', $data);
+            $result = curl::POST('http://localhost:3000/api/dantoc/update', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlydulieu', 'dantoc'));
             }else{
@@ -73,7 +73,7 @@ class quanlydulieuController extends Controller{
              $iddantoc = $this->_arrPrams['iddantoc'] ;
             if(!empty($iddantoc)){
                 // lấy tất cả các dân tôc
-                $url = "http://localhost:9000/api/dantoc/only?iddantoc=".$iddantoc;
+                $url = "http://localhost:3000/api/dantoc/only?iddantoc=".$iddantoc;
                 $this->_view->dantoc = $this->_model->getAPI($url); 
                 
                 $this->_view->render('quanlydulieu/dantoc/chinhsuadantoc');
@@ -93,7 +93,7 @@ class quanlydulieuController extends Controller{
     /* PHẦN HỆ ĐÀO TẠO */
     function hedaotaoAction(){
         // lấy tất cả hệ đào tạo
-        $url = "http://localhost:9000/api/hedaotao/all";
+        $url = "http://localhost:3000/api/hedaotao/all";
         $this->_view->danhsachhedaotao = $this->_model->getAPI($url); 
         
         $this->_view->render('quanlydulieu/hedaotao/index');
@@ -105,7 +105,7 @@ class quanlydulieuController extends Controller{
                 'idhedaotao'=> $_POST['idhedaotao'],
                 'tenhedaotao'=> $_POST['tenhedaotao'],
             );
-            $result = curl::POST('http://localhost:9000/api/hedaotao/update', $data);
+            $result = curl::POST('http://localhost:3000/api/hedaotao/update', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlydulieu', 'hedaotao'));
             }else{
@@ -114,7 +114,7 @@ class quanlydulieuController extends Controller{
         }else{
              $idhedaotao = $this->_arrPrams['idhedaotao'] ;
             // lấy tất cả các tỉnh
-            $url = "http://localhost:9000/api/hedaotao/only?idhedaotao=".$idhedaotao;
+            $url = "http://localhost:3000/api/hedaotao/only?idhedaotao=".$idhedaotao;
             $this->_view->hedaotao = $this->_model->getAPI($url); 
             
             $this->_view->render('quanlydulieu/hedaotao/chinhsuahedaotao');
@@ -123,7 +123,7 @@ class quanlydulieuController extends Controller{
     function themhedaotaoAction(){
         if($_POST){
             $data = $_POST;
-            $result = curl::POST('http://localhost:9000/api/hedaotao/create', $data);
+            $result = curl::POST('http://localhost:3000/api/hedaotao/create', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlydulieu', 'hedaotao'));
             }else{
@@ -140,7 +140,7 @@ class quanlydulieuController extends Controller{
             $data = array(
                 "idhedaotao" => $idhedaotao
             );
-            $result = curl::POST('http://localhost:9000/api/hedaotao/delete', $data);
+            $result = curl::POST('http://localhost:3000/api/hedaotao/delete', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlydulieu', 'hedaotao'));
             }else{
@@ -157,7 +157,7 @@ class quanlydulieuController extends Controller{
     // hiện thị danh sách tỉnh thành
     function tinhthanhAction(){ 
         // lấy tất cả các tỉnh
-        $url = "http://localhost:9000/api/tinhthanh/all";
+        $url = "http://localhost:3000/api/tinhthanh/all";
         $this->_view->danhsachtinhthanh = $this->_model->getAPI($url); 
         
         $this->_view->render('quanlydulieu/tinhthanh/index');
@@ -166,7 +166,7 @@ class quanlydulieuController extends Controller{
     function themtinhthanhAction(){
         if($_POST){
             $data = $_POST;
-            $result = curl::POST('http://localhost:9000/api/tinhthanh/create', $data);
+            $result = curl::POST('http://localhost:3000/api/tinhthanh/create', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlydulieu', 'tinhthanh'));
             }else{
@@ -184,7 +184,7 @@ class quanlydulieuController extends Controller{
             $data = array(
                 "idtinhthanh" => $idtinhthanh
             );
-            $result = curl::POST('http://localhost:9000/api/tinhthanh/delete', $data);
+            $result = curl::POST('http://localhost:3000/api/tinhthanh/delete', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlydulieu', 'tinhthanh'));
             }else{
@@ -201,7 +201,7 @@ class quanlydulieuController extends Controller{
                 'idtinhthanh'=> $_POST['idtinhthanh'],
                 'tentinhthanh'=> $_POST['tentinhthanh'],
             );
-            $result = curl::POST('http://localhost:9000/api/tinhthanh/update', $data);
+            $result = curl::POST('http://localhost:3000/api/tinhthanh/update', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlydulieu', 'tinhthanh'));
             }else{
@@ -210,7 +210,7 @@ class quanlydulieuController extends Controller{
         }else{
              $idtinhthanh = $this->_arrPrams['idtinhthanh'] ;
             // lấy tất cả các tỉnh
-            $url = "http://localhost:9000/api/tinhthanh/only?idtinhthanh=".$idtinhthanh;
+            $url = "http://localhost:3000/api/tinhthanh/only?idtinhthanh=".$idtinhthanh;
             $this->_view->danhsachtinhthanh = $this->_model->getAPI($url); 
             
             $this->_view->render('quanlydulieu/tinhthanh/chinhsuatinhthanh');
@@ -222,7 +222,7 @@ class quanlydulieuController extends Controller{
     /* PHẦN CHỨC VỤ */
     function chucvuAction(){
          // lấy tất cả các chức vụ
-         $url = "http://localhost:9000/api/chucvu/all";
+         $url = "http://localhost:3000/api/chucvu/all";
          $this->_view->danhsachchucvu = $this->_model->getAPI($url); 
          
          $this->_view->render('quanlydulieu/chucvu/index');
@@ -230,7 +230,7 @@ class quanlydulieuController extends Controller{
     function themchucvuAction(){
         if($_POST){
             $data = $_POST;
-            $result = curl::POST('http://localhost:9000/api/chucvu/create', $data);
+            $result = curl::POST('http://localhost:3000/api/chucvu/create', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlydulieu', 'chucvu'));
             }else{
@@ -248,7 +248,7 @@ class quanlydulieuController extends Controller{
                 'idchucvu'=> $_POST['idchucvu'],
                 'tenchucvu'=> $_POST['tenchucvu'],
             );
-            $result = curl::POST('http://localhost:9000/api/chucvu/update', $data);
+            $result = curl::POST('http://localhost:3000/api/chucvu/update', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlydulieu', 'chucvu'));
             }else{
@@ -258,7 +258,7 @@ class quanlydulieuController extends Controller{
              $idchucvu = $this->_arrPrams['idchucvu'] ;
             if(!empty($idchucvu)){
                 // lấy tất cả các chức vụ
-                $url = "http://localhost:9000/api/chucvu/only?idchucvu=".$idchucvu;
+                $url = "http://localhost:3000/api/chucvu/only?idchucvu=".$idchucvu;
                 $this->_view->chucvu = $this->_model->getAPI($url); 
                 
                 $this->_view->render('quanlydulieu/chucvu/chinhsuachucvu');
@@ -274,7 +274,7 @@ class quanlydulieuController extends Controller{
             $data = array(
                 "idchucvu" => $idchucvu
             );
-            $result = curl::POST('http://localhost:9000/api/chucvu/delete', $data);
+            $result = curl::POST('http://localhost:3000/api/chucvu/delete', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlydulieu', 'chucvu'));
             }else{

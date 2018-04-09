@@ -26,8 +26,5 @@ class quanlytrangchuController extends controller{
 
         $this->_view->render('quanlytrangchu/quanlytrangchu');
     }
-
-   
-
 }
 ?>

@@ -35,12 +35,16 @@ const ngoainguRouter = require('./router/ngoaingu.router');
 const tinhthanhRouter = require('./router/tinhthanh.router');
 const hedaotaoRouter = require('./router/hedaotao.router');
 const dantocRouter = require('./router/dantoc.router');
+const phatluongRouter = require('./router/phatluong.router');
+const tamungRouter = require('./router/tamung.router');
 
 // ROUTER
 app.use('/api', nhanvienRouter);
 app.use('/api', nguoidungRouter);
 app.use('/api', thuongluongRouter)
+app.use('/api/phatluong', phatluongRouter)
 app.use('/api/chucvu', chucvuRouter);
+app.use('/api/tamung', tamungRouter);
 app.use('/api/ngoaingu', ngoainguRouter);
 app.use('/api/tinhthanh', tinhthanhRouter);
 app.use('/api/hedaotao', hedaotaoRouter);

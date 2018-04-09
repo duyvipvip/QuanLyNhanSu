@@ -23,7 +23,7 @@ class quanlynhanvienController extends Controller{
        if($_POST){
            $data = $_POST;
            $data[hinhanh] = $_FILES['hinhanh']['name'];
-           $result = curl::POST('http://localhost:9000/api/chinhsuanhanvien', $data);
+           $result = curl::POST('http://localhost:3000/api/chinhsuanhanvien', $data);
            if($result){
                url::redirect(url::createLink('admin', 'quanlytrangchu', 'index'));
            }else{
@@ -32,27 +32,27 @@ class quanlynhanvienController extends Controller{
        }else{
             $idnhanvien = $this->_arrPrams['idnhanvien'] ;
             // lấy nhân viên
-            $url = "http://localhost:9000/api/timkiemnhanvien/";
+            $url = "http://localhost:3000/api/timkiemnhanvien/";
             $this->_view->nhanvien = $this->_model->laymotnhanvien($url ,$idnhanvien);
            
             // lấy tất cả chức vụ
-            $url = "http://localhost:9000/api/chucvu/all";
+            $url = "http://localhost:3000/api/chucvu/all";
             $this->_view->danhsachchucvu = $this->_model->getAPI($url); 
             
             // lấy tất cả ngoại ngữ
-            $url = "http://localhost:9000/api/ngoaingu/all";
+            $url = "http://localhost:3000/api/ngoaingu/all";
             $this->_view->danhsachngoaingu = $this->_model->getAPI($url); 
 
             // lấy tất cả các tỉnh
-            $url = "http://localhost:9000/api/tinhthanh/all";
+            $url = "http://localhost:3000/api/tinhthanh/all";
             $this->_view->danhsachtinhthanh = $this->_model->getAPI($url); 
 
             // lấy tất cả các hệ đào tạo
-            $url = "http://localhost:9000/api/hedaotao/all";
+            $url = "http://localhost:3000/api/hedaotao/all";
             $this->_view->danhsachhedaotao = $this->_model->getAPI($url); 
             
             // lấy tất cả dân tộc
-            $url = "http://localhost:9000/api/dantoc/all";
+            $url = "http://localhost:3000/api/dantoc/all";
             $this->_view->danhsachdantoc = $this->_model->getAPI($url); 
  
              
@@ -68,7 +68,7 @@ class quanlynhanvienController extends Controller{
             $data = array(
                 "idnhanvien" => $idnhanvien
             );
-            $result = curl::POST('http://localhost:9000/api/xoanhanvien', $data);
+            $result = curl::POST('http://localhost:3000/api/xoanhanvien', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlytrangchu', 'index'));
             }else{
@@ -84,7 +84,7 @@ class quanlynhanvienController extends Controller{
     function themnhanvienAction(){
         if($_POST){
             $data = $_POST;
-            $result = curl::POST('http://localhost:9000/api/taomoinhanvien', $data);
+            $result = curl::POST('http://localhost:3000/api/taomoinhanvien', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlytrangchu', 'index'));
             }else{
@@ -93,23 +93,23 @@ class quanlynhanvienController extends Controller{
             
         }else{
             // lấy tất cả chức vụ
-            $url = "http://localhost:9000/api/chucvu/all";
+            $url = "http://localhost:3000/api/chucvu/all";
             $this->_view->danhsachchucvu = $this->_model->getAPI($url); 
             
             // lấy tất cả ngoại ngữ
-            $url = "http://localhost:9000/api/ngoaingu/all";
+            $url = "http://localhost:3000/api/ngoaingu/all";
             $this->_view->danhsachngoaingu = $this->_model->getAPI($url); 
 
             // lấy tất cả các tỉnh
-            $url = "http://localhost:9000/api/tinhthanh/all";
+            $url = "http://localhost:3000/api/tinhthanh/all";
             $this->_view->danhsachtinhthanh = $this->_model->getAPI($url); 
 
             // lấy tất cả các hệ đào tạo
-            $url = "http://localhost:9000/api/hedaotao/all";
+            $url = "http://localhost:3000/api/hedaotao/all";
             $this->_view->danhsachhedaotao = $this->_model->getAPI($url); 
             
             // lấy tất cả dân tộc
-            $url = "http://localhost:9000/api/dantoc/all";
+            $url = "http://localhost:3000/api/dantoc/all";
             $this->_view->danhsachdantoc = $this->_model->getAPI($url); 
             
             $this->_view->render('quanlynhanvien/themnhanvien');
