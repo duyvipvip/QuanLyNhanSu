@@ -1,0 +1,66 @@
+.table{
+    font-size: 14px;
+}
+.table td i{
+    margin: 0px 5px;
+}
+.panel-widget{
+    overflow: hidden;
+    overflow: auto;
+}
+.imageedit{
+    margin-top: 15px !important;
+}
+
+/* danh sach */
+.list{
+    position: relative;
+}
+.list .row{
+    display: table;
+    width: 100%;
+    margin: 7px 0px;
+    border: 1px solid #CCC;
+    font: 13px Tahoma, Geneva, sans-serif;
+    background-color: #fff;
+
+}
+.list .row1{
+    background-color: #fddfdf !important;
+}
+.list .head{
+    text-align: center;
+    font-weight: bold;
+}
+
+.list .row .w-10, .list .row .action{
+    width: 10%;
+    text-align: center;
+}
+
+.list .row .action{
+    border-right: none;
+}
+
+
+.list .row  a{
+    text-decoration: none;
+    /* color: #000; */
+}
+
+.list .row  a:hover{
+    text-decoration: underline;
+}
+
+.list .row > p{
+    display: table-cell;
+    vertical-align: middle;
+    border-right: 1px solid #CCC;
+    text-align: center;
+    height: 30px;
+}
+
+/* user name */
+.name{
+    text-transform: capitalize;
+}
