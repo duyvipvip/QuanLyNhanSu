@@ -30,5 +30,9 @@ const nhanvienSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'tamungluong'
     }],
+    chamcongs: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'chamcong'
+    }],
 }, { collection: 'nhanvien'});
 module.exports = mongoose.model('nhanvien', nhanvienSchema);

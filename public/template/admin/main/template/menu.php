@@ -28,8 +28,12 @@
 						<a href="<?php echo url::createLink('admin', 'quanlyluong', 'tamung'); ?>">Tạm ứng</a>
 					</li>
 					<li>
+						<a href="<?php echo url::createLink('admin', 'quanlyluong', 'chamcong'); ?>">Chấm công</a>
+					</li>
+					<li>
 						<a href="<?php echo url::createLink('admin', 'quanlyluong', 'bangluong'); ?>">Bảng lương</a>
 					</li>
+					
 				</ul>
 				<!-- /nav-second-level -->
 			</li>

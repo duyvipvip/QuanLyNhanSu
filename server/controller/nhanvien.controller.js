@@ -23,6 +23,10 @@ function laytatcanhanvien(){
             path: 'tamungs',
             select: 'thangtamung ngaytamung sotientamung lydotamung'
         })
+        .populate({
+            path: 'chamcongs',
+            select: 'time'
+        })
         .then((nhanvien) => {
             return Promise.resolve(nhanvien);
         })

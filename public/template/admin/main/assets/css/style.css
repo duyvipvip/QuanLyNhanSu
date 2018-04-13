@@ -862,7 +862,7 @@ ul.dropdown-menu.drp-mnu li {
 /* Panels */
 .panel {
 	background: #FFFFFF;
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
     margin-bottom: 20px;
     border-radius: 0;
     position: relative;

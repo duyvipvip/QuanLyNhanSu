@@ -37,6 +37,7 @@ const hedaotaoRouter = require('./router/hedaotao.router');
 const dantocRouter = require('./router/dantoc.router');
 const phatluongRouter = require('./router/phatluong.router');
 const tamungRouter = require('./router/tamung.router');
+const chamcongRouter = require('./router/chamcong.router');
 
 // ROUTER
 app.use('/api', nhanvienRouter);
@@ -49,6 +50,8 @@ app.use('/api/ngoaingu', ngoainguRouter);
 app.use('/api/tinhthanh', tinhthanhRouter);
 app.use('/api/hedaotao', hedaotaoRouter);
 app.use('/api/dantoc', dantocRouter);
+app.use('/api/chamcong', chamcongRouter);
+
 app.use('/auth', authRouter);
 
 app.listen(port, function() {

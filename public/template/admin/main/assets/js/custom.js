@@ -1,7 +1,16 @@
 $(function() {
-
     $('#side-menu').metisMenu();
 
+    // submit checkbox chấm công
+    $("#formcheckbox").on("change", "input:checkbox", function(){
+        $.ajax({
+            url: 'index.php?module=admin&controller=quanlyluong&action=chamcong',
+            type: 'POST',
+            cache: false,
+            data: 'data='+this.value,
+            
+          });
+    });
 });
 
 //Loads the correct sidebar on window load,
