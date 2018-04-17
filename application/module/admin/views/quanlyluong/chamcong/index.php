@@ -1,7 +1,7 @@
 <?php 
     // ============== PHẦN XỬ LÝ CÁC NGÀY TRONG THÁNG ========================
-    $currentMonth = date('m', strtotime('0 month'));
-    $currentYear = date('Y');
+    $currentMonth = empty($_GET['thang']) ? date('m', strtotime('0 month')) : $_GET['thang'];
+    $currentYear = empty($_GET['nam']) ? date('Y'): $_GET['nam'];
 
     // lấy ngày bắt đầu và kết thúc của tháng
     $timeCurrentMonthFirst = date("Y-m-d", mktime(0, 0, 0, $currentMonth ,1 ,$currentYear));
@@ -20,10 +20,11 @@
         array_push($arrayTimeSamp, $tempTimeSamp);
         $dayHeader = date('d/m', $tempTimeSamp);
         if($tempTimeSamp == $timeCurrentMonthLast){
-            $xhtmlHearderDay .= "<p style='width: 2.85%'>$dayHeader</p>";
+            $xhtmlHearderDay .= "<p style='width: 2.5%'>$dayHeader</p>";
+            $xhtmlHearderDay .= "<p>Tổng ngày làm</p>";
             break;
         }else{
-            $xhtmlHearderDay .= "<p style='width: 2.85%'>$dayHeader</p>";
+            $xhtmlHearderDay .= "<p style='width: 2.5%'>$dayHeader</p>";
             $tempTimeSamp += 86400;
         }
     }
@@ -39,9 +40,21 @@
             foreach ($arrayTimeSamp as $key => $timesamp) {
                 $htmlCheck .= checkBox($nhanvien->_id, $timesamp, $danhSachNhanVien);
             }
+            // tính tổng ngày làm
+            $totalChamCong = 0;
+            if($nhanvien->chamcongs){
+                foreach ($nhanvien->chamcongs as $key => $chamcong) {
+                    if(date('m',$chamcong->time) == $currentMonth && date('Y',$chamcong->time) == $currentYear){
+                        $totalChamCong++;
+                    }
+                }
+            }
             $xhtmlDanhSachNhanVien .= " <div class='row'>
-                <p style='width: 15%'>$nhanvien->hoten</p>
+                <p style='width: 10%'>$nhanvien->hoten</p>
                 $htmlCheck
+                <p>
+                    <span>$totalChamCong</span>
+                </p>
             </div>";
         }
     }
@@ -52,29 +65,62 @@
             if($nhanvien->chamcongs != null){
                 foreach ($nhanvien->chamcongs as $key => $chamcong) {
                     if($chamcong->time == $timesamp && $nhanvien->_id == $idnhanvien){
-                        return "<p style='width: 2.85%'>
+                        return "<p style='width: 2.5%'>
                             <input type='checkbox' checked name='data' value='$idnhanvien;$timesamp'>
                         </p>";
                     }
                 }
             }
         }
-        return "<p style='width: 2.85%'>
+        return "<p style='width: 2.5%'>
                     <input type='checkbox' name='data' value='$idnhanvien;$timesamp'>
                 </p>";
     }
 ?>
+<div class="form">
+    <h3>Bảng Chấm Công</h3>
+    <form id="formchamcong" style="margin-bottom: 20px;" action="index.php" method="GET">
+        <input type="hidden" name="module" value="admin">
+        <input type="hidden" name="controller" value="quanlyluong">
+        <input type="hidden" name="action" value="chamcong">
+        <label for="">Tháng: </label>
+        <select name="thang" required="true" class="at-required">
+            <?php
+                for($i = 1; $i <= 12; $i++){
+                    if($i == $currentMonth){
+                        echo "<option selected=selected value=$i>$i</option>";
+                    }else{
+                        echo "<option value=$i>$i</option>";
+                    }
+                }
+            ?>
+        </select>
+        <label for="">Năm: </label>
+        <select name="nam" required="true" class="at-required">
+            <?php
+                for($i = 2018;$i >= 1995 ; $i--){
+                    if($i == $currentYear){
+                        echo "<option selected=selected value=$i>$i</option>";
+                    }else{
+                        echo "<option value=$i>$i</option>";
+                    }
+                }
+            ?>
+        </select>
+    </form>
+    <div class="clr"></div>
+</div>
 
 <div class="panel panel-widget">
-    <h3>Bảng Chấm Công</h3>
-    <div style="width: 2000px;">
+    <div style="width: 2000px; height: 300px;">
         <div class="list">
             <div class="row head" >
-                <p style='width: 15%'>Họ tên</p>
+                <p style='width: 10%'>Họ tên</p>
                 <?php echo $xhtmlHearderDay ?>
             </div>
             <form id="formcheckbox" action="index.php?module=admin&controller=quanlyluong&action=chamcong" method="POST">
                 <?php echo $xhtmlDanhSachNhanVien;?>
+                
             </form>
         </div>
     </div>

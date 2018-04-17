@@ -64,3 +64,31 @@
 .name{
     text-transform: capitalize;
 }
+
+/* form */
+.form{
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.form h3{
+    display: inline-block;
+    color: red;
+}
+.form form{
+    margin: 0px !important;
+    float: right;
+}
+/* cai dat thong so */
+.col-doanhnghep, .col-nguoilaodong, .col-thunhapcanhan{
+    box-shadow: 0 -1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.col-doanhnghep h4, .col-nguoilaodong h4, .col-thunhapcanhan h4{
+    margin-bottom: 10px;
+}
+.row{
+    margin: 0px !important;
+}

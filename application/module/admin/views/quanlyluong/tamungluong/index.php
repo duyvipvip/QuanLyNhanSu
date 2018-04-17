@@ -38,10 +38,10 @@
     }
     
 ?>
-  
+<div class="form">
+    <h3>Bảng Tạm Ứng Lương</h3>
+</div>
 <div class="panel panel-widget">
-    <h3>Quản lý tạm ứng</h3>
-
     <div style="width: 1000px;">
         <div class="list">
             <div class="row head" >

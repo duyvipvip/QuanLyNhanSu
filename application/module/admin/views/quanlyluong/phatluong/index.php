@@ -38,8 +38,10 @@
     }
     
 ?>
+<div class="form">
+    <h3>Bảng Phạt Lương</h3>
+</div>
 <div class="panel panel-widget">
-    <h3>Quản lý phạt lương</h3>
     <div style="width: 1000px;">
         <div class="list">
             <div class="row head" >

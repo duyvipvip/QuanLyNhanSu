@@ -207,41 +207,54 @@ class quanlyluongController extends Controller{
         $timeCurrentMonthLast = (new DateTime($timeCurrentMonthLast))->getTimestamp();
 
         foreach($dsnhanvien as $key => $nhanvien){
+            // tính thưởng lương
             $totalthuongluong = 0;
             foreach($nhanvien->thuongluongs as $key => $thuongluongs){
                 $time = date("Y-m-d", strtotime($thuongluongs->ngaythuong));
                 $time = (new DateTime($time))->getTimestamp();
-                if($time >= $timeCurrentMonthFirst && $time <= $timeCurrentMonthLast){
+                if(date('Y',$time) == $currentYear && $time >= $timeCurrentMonthFirst && $time <= $timeCurrentMonthLast){
                     $totalthuongluong += $thuongluongs->sotienthuong;
                 }
             }
             $nhanvien->totalthuongluong = $totalthuongluong;
 
+            // tính tổng phát lương
             $totalphatluong = 0;
             foreach($nhanvien->phatluongs as $key => $phatluongs){
                 $time = date("Y-m-d", strtotime($phatluongs->ngayphat));
                 $time = (new DateTime($time))->getTimestamp();
-                if($time >= $timeCurrentMonthFirst && $time <= $timeCurrentMonthLast){
+                if(date('Y',$time) == $currentYear && $time >= $timeCurrentMonthFirst && $time <= $timeCurrentMonthLast){
                     $totalphatluong += $phatluongs->sotienphat *-1;
                 }
                 
             }
             $nhanvien->totalphatluong = $totalphatluong;
 
+            // tính tổng tiền tạm ứng
             $totaltamung = 0;
             foreach($nhanvien->tamungs as $key => $tamungs){
                 $time = date("Y-m-d", strtotime($tamungs->ngaytamung));
                 $time = (new DateTime($time))->getTimestamp();
-                if($time >= $timeCurrentMonthFirst && $time <= $timeCurrentMonthLast){
+                if(date('Y',$time) == $currentYear && $time >= $timeCurrentMonthFirst && $time <= $timeCurrentMonthLast){
                     $totaltamung += $tamungs->sotientamung *-1;
                 }
             }
             $nhanvien->totaltamung = $totaltamung;
 
-            $nhanvien->luongcanban = 3000000;
-            $nhanvien->hsluong = 1.5;
+            // tổng số ngày làm việc
+            $totalchamcong = 0;
+            if($nhanvien->chamcongs != null){
+                foreach ($nhanvien->chamcongs as $key => $chamcong) {
+                    if(date('Y',$chamcong->time) == $currentYear && date('m',$chamcong->time) == $currentMonth){
+                        $totalchamcong++;
+                    }
+                }
+            }
+            $nhanvien->totalchamcong = $totalchamcong;
 
-            $nhanvien->totalluong = ($nhanvien->luongcanban * $nhanvien->hsluong) + $totalthuongluong + $totaltamung + $totalphatluong;
+            // tính tổng tiền
+            $nhanvien->luong1ngay = 200000;
+            $nhanvien->totalluong = ($nhanvien->luong1ngay * $nhanvien->totalchamcong) + $totalthuongluong + $totaltamung + $totalphatluong;
         }
         $this->_view->danhsachnhanvien = $dsnhanvien;
         if($checkReport == true){
@@ -277,7 +290,9 @@ class quanlyluongController extends Controller{
     function chamcongAction(){
         $url = "http://localhost:3000/api/laytatcanhanvien";
         $this->_view->danhsachnhanvien = $this->_model->danhsachnhanvien($url); 
-        print_r($_POST);
+
+        $this->_view->currentMonth = empty($_GET['thang']) ? date('m', strtotime('0 month')) : $_GET['thang'];
+        $this->_view->currentYear = empty($_GET['nam']) ? date('Y'): $_GET['nam'];
        
         if($_POST){
             

@@ -11,6 +11,13 @@ $(function() {
             
           });
     });
+
+    $("#formbangluong").change(function() {
+        $("#formbangluong").submit();
+    });
+    $("#formchamcong").change(function() {
+        $("#formchamcong").submit();
+    });
 });
 
 //Loads the correct sidebar on window load,

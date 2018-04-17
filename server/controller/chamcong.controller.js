@@ -23,21 +23,26 @@ function thucHienChamCong(bodyChamCong) {
         .then((dschamcong) => {
 
             if (dschamcong.length != 0) {
-                // return chamcongModel.findOneAndRemove({ idnhanvien: bodyChamCong.idnhanvien, time: bodyChamCong.time })
-                //     .then((chamcong) => {
-
-                //         return Promise.resolve(chamcong);
-                //     })
-                //     .catch((err) => {
-                //         return Promise.reject(err);
-                //     })
-                return chamcongModel.findOne({idnhanvien: bodyChamCong.idnhanvien, time: bodyChamCong.time}, function (err, project) {
-                    return project.remove(function(err){
-                        if(!err) {
-                        } 
-                        return Promise.resolve('d3d');
-                      });  
-                });
+                return chamcongModel.findOneAndRemove({ idnhanvien: bodyChamCong.idnhanvien, time: bodyChamCong.time })
+                    .then((chamcong) => {
+                        return nhanvienModel.findOne({'_id':chamcong.idnhanvien})
+                            .then((data) => {
+                                data.chamcongs.pull(chamcong._id);
+                                return data.save().then(() => {
+                                    return Promise.resolve(chamcong);
+                                })
+                            })
+                    })
+                    .catch((err) => {
+                        return Promise.reject(err);
+                    })
+                // return chamcongModel.findOne({idnhanvien: bodyChamCong.idnhanvien, time: bodyChamCong.time}, function (err, project) {
+                //     return project.remove(function(err){
+                //         if(!err) {
+                //         } 
+                //         return Promise.resolve('d3d');
+                //       });  
+                // });
             } else {
                 let objchamcong = new chamcongModel(bodyChamCong);
                 return objchamcong.save()
