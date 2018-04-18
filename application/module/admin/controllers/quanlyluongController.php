@@ -1,5 +1,5 @@
 <?php
-class quanlyluongController extends Controller{
+class quanlyluongController extends controller{
     private $datareport= 'dedw';
     function __construct($arrPrams){
         if(!auth::login()){

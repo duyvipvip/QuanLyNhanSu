@@ -1,5 +1,5 @@
 <?php
-class quanlynhanvienController extends Controller{
+class quanlynhanvienController extends controller{
     public function __construct($arrPrams)
     {
         if(!auth::login()){

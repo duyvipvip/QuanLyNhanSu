@@ -1,7 +1,8 @@
 const caidatluongModel = require('../model/caidatluong.model');
 
 module.exports = {
-    getCaiDatLuong: getCaiDatLuong
+    getCaiDatLuong: getCaiDatLuong,
+    updateCaidatLuong: updateCaidatLuong
 }
 
 function getCaiDatLuong(){
@@ -15,7 +16,7 @@ function getCaiDatLuong(){
 }
 
 function updateCaidatLuong(bodyCaiDatLuong){
-    return caidatluongModel.findOneAndUpdate({id: '5ad59927b00e70aed0d4bd1d'}, bodyCaiDatLuong)
+    return caidatluongModel.findOneAndUpdate({id: '5ad71f5b09ad3b6cb18f0048'}, bodyCaiDatLuong)
         .then((caidatluong) => {
             return Promise.resolve(caidatluong);
         })

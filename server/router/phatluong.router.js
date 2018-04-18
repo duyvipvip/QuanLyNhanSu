@@ -13,9 +13,7 @@ function timkiemmotphatluong(req, res, next){
         .then((phatluong) => {
             res.send(phatluong);
         })
-        .catch((err) => {
-
-        });
+       
 }
 
 // TẠO MỚI LƯƠNG THƯỞNG

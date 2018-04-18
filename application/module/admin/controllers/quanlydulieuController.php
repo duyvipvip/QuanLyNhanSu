@@ -1,5 +1,5 @@
 <?php
-class quanlydulieuController extends Controller{
+class quanlydulieuController extends controller{
     function __construct($arrPrams){
         if(!auth::login()){
             print_r(Session::get('token'));

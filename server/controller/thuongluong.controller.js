@@ -13,8 +13,7 @@ function timkiemmotthuongluong(body){
     return thuongluongModel.find(
         {
             idnhanvien: body.idnhanvien ,_id: body.idthuongluong
-        },
-    )
+        })
         .then((thuongluong) => {
             return Promise.resolve(thuongluong);
         })

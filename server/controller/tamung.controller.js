@@ -13,7 +13,7 @@ function timkiemmottamung(body){
     return tamungModel.find(
         {
             idnhanvien: body.idnhanvien ,_id: body.idtamung
-        },
+        }
     )
         .then((tamung) => {
             return Promise.resolve(tamung);

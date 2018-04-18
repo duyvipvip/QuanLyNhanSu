@@ -13,7 +13,7 @@ function timkiemmotphatluong(body){
     return phatluongModel.find(
         {
             idnhanvien: body.idnhanvien ,_id: body.idphatluong
-        },
+        }
     )
         .then((phatluong) => {
             return Promise.resolve(phatluong);
