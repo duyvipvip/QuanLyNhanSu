@@ -13,9 +13,9 @@ class quanlytrangchuController extends controller{
 
         
         
-        if(!auth::login()){
-            url::redirect(url::createLink('admin', 'dangnhap', 'index'));
-        }
+        // if(!auth::login()){
+        //     url::redirect(url::createLink('admin', 'dangnhap', 'index'));
+        // }
     }
 
     // HIỆN THỊ DANH SÁCH NHÂN VIÊN
