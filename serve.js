@@ -13,12 +13,13 @@ const session = require('express-session');
 
 
 // CHUYỂN DATA THÀNH DẠNG JSON
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended:false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + 'index..php'));
 require('./server/config/passport')(passport);
 app.use(cookieParser());
+app.set('view engine', 'jade');
 // app.use(bodyParser.urlencoded({extended: false}));
 app.use(session({secret: 'meomeomeo',
 				 saveUninitialized: true,
