@@ -21,7 +21,7 @@ class quanlytrangchuController extends controller{
     // HIỆN THỊ DANH SÁCH NHÂN VIÊN
     public function indexAction(){
         // lấy danh sách tất cả nhân viên
-        $url = "http://localhost:3000/api/laytatcanhanvien";
+        $url = "/api/laytatcanhanvien";
         $this->_view->danhsachnhanvien = $this->_model->getAPI($url);        
 
         $this->_view->render('quanlytrangchu/quanlytrangchu');

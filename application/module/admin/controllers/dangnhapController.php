@@ -17,7 +17,7 @@
         function indexAction(){
             if(!empty($_GET['token'])){
                 $token = $_GET['token'];
-                $url = "http://localhost:3000/auth/me?token=".$token;
+                $url = "/auth/me?token=".$token;
                 $nguoidung = $this->_model->getAPI($url);
                 if(!empty($nguoidung)){
                     Session::set('nguoidung', $nguoidung);
@@ -28,7 +28,7 @@
             }
             if($_POST){
                 $data = $_POST;
-                $token =  json_decode(curl::POST('http://localhost:3000/auth/login', $data));
+                $token =  json_decode(curl::POST('/auth/login', $data));
                 if($token->token != null){
                         Session::set('nguoidung', $token->nguoidung);
                         Session::set('token', $token->token);

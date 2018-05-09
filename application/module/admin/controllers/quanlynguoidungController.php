@@ -19,7 +19,7 @@ class quanlynguoidungController extends controller{
     }
 
     public function indexAction(){
-        $url = "http://localhost:3000/api/laytatcanguoidung";
+        $url = "/api/laytatcanguoidung";
         $this->_view->danhSachNguoiDung = $this->_model->danhsachnguoidung($url); 
         $this->_view->render('quanlynguoidung/index');
     }

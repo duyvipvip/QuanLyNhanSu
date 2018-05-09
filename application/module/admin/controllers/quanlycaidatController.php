@@ -17,14 +17,14 @@ class quanlycaidatController extends controller{
     public function caidatthongsoAction(){
         if($_POST){
             $data = $_POST;
-            $result = curl::POST('http://localhost:3000/api/caidatluong/update', $data);
+            $result = curl::POST('/api/caidatluong/update', $data);
             if($result){
                 url::redirect(url::createLink('admin', 'quanlytrangchu', 'index'));
             }else{
                 url::redirect(url::createLink('admin', 'error', 'error'));
             }
         }
-        $url = "http://localhost:3000/api/caidatluong/all";
+        $url = "/api/caidatluong/all";
         $this->_view->caidatluong = $this->_model->getAPI($url);
         $this->_view->render('quanlycaidat/caidatthongso');
     }

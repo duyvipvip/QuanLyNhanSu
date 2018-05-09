@@ -38,9 +38,9 @@
             <h2>or login with</h2>
             <div class="login-icons">
                 <ul>
-                    <li><a href="http://localhost:3000/auth/facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="/auth/facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>
                     <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="http://localhost:3000/auth/google" class="google"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="/auth/google" class="google"><i class="fa fa-google-plus"></i></a></li>
                     <li><a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a></li>
                 </ul>
             </div>

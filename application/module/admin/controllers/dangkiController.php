@@ -17,7 +17,7 @@
                     url::redirect(url::createLink('admin', 'dangki', 'index'));
                 }else{
                     unset($data['confirmpassword']);
-                    $result =json_decode(curl::POST('http://localhost:3000/api/taomoinguoidung', $data));
+                    $result =json_decode(curl::POST('/api/taomoinguoidung', $data));
                     if(!empty($result->message)){
                         Session::set('message', $result->message);
                         $this->_view->render('dangki/index');
