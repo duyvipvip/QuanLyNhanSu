@@ -9,7 +9,7 @@
     define('TEMPLATE_PATH',         PUBLIC_PATH . "template" . DS);
 
     // ===================== Absolute PATH ================
-    define('ROOT_URL',             DS. "quanlynhansu" . DS);
+    define('ROOT_URL',             DS. "https://testthoi.herokuapp.com" . DS);
     define('PUBLIC_URL',           ROOT_URL .'public'. DS);
     define('APPLICATION_URL',      ROOT_URL .'application'. DS);
     define('MODULE_URL',           APPLICATION_URL . 'module' . DS);
