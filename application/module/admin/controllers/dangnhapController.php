@@ -22,7 +22,7 @@
                 if(!empty($nguoidung)){
                     Session::set('nguoidung', $nguoidung);
                     Session::set('token', $token);
-                    url::redirect(url::createLink('admin', 'quanlytrangchu', 'index'));
+                    // url::redirect(url::createLink('admin', 'quanlytrangchu', 'index'));
                 }
                 
             }
@@ -32,7 +32,7 @@
                 if($token->token != null){
                         Session::set('nguoidung', $token->nguoidung);
                         Session::set('token', $token->token);
-                        url::redirect(url::createLink('admin', 'quanlytrangchu', 'index'));
+                        // url::redirect(url::createLink('admin', 'quanlytrangchu', 'index'));
                 }else{
                     Session::set('message', $token->message);
                     $this->_view->render('dangnhap/index');
@@ -46,7 +46,7 @@
         function logoutAction(){
             Session::delete('token');
             Session::delete('nguoidung');
-            url::redirect(url::createLink('admin', 'dangnhap', 'index'));
+            // url::redirect(url::createLink('admin', 'dangnhap', 'index'));
         }
     }
 ?>
