@@ -13,6 +13,7 @@ const session = require('express-session');
 
 
 // CHUYỂN DATA THÀNH DẠNG JSON
+app.use(express.static(__dirname + '/dist'));
 app.use(bodyParser.urlencoded({ extended:false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + 'index..php'));
@@ -25,7 +26,9 @@ app.use(session({secret: 'meomeomeo',
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
+  });
 // REQUIRE ROUTER
 const nhanvienRouter = require(path.join(__dirname, "/server/router/nhanvien.router"));
 const nguoidungRouter = require(path.join(__dirname, "/server/router/nguoidung.router"));
