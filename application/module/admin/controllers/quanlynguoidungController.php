@@ -38,6 +38,9 @@ class quanlynguoidungController extends controller{
 
     // THÊM NHÂN VIÊN
     function themnguoidungAction(){
+        $url = "/api/laytatcanguoidung";
+        $abc = $this->_model->danhsachnguoidung($url); 
+        print_r($abc);
     }
 }
 ?>
