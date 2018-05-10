@@ -21,6 +21,8 @@ class quanlynguoidungController extends controller{
     public function indexAction(){
         $url = "/api/laytatcanguoidung";
         $this->_view->danhSachNguoiDung = $this->_model->danhsachnguoidung($url); 
+        print_r($this->_view->danhSachNguoiDung);
+        print_r("fsef");
         $this->_view->render('quanlynguoidung/index');
     }
 
