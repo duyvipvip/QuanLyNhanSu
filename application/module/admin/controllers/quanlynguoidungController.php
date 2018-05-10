@@ -2,10 +2,10 @@
 class quanlynguoidungController extends controller{
     public function __construct($arrPrams)
     {
-        // if(!auth::login()){
-        //     print_r(Session::get('token'));
-        //     url::redirect(url::createLink('admin', 'dangnhap', 'index'));
-        // }
+        if(!auth::login()){
+            print_r(Session::get('token'));
+            url::redirect(url::createLink('admin', 'dangnhap', 'index'));
+        }
         
         // TAO CÁC ĐỐI TƯỢNG MODEL, VIEW, TEMPLATE
         parent::__construct($arrPrams);
