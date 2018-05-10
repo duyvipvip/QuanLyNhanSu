@@ -18,23 +18,17 @@ app.all('*', function(req, res, next) {
 });
 
 // CHUYỂN DATA THÀNH DẠNG JSON
-app.use(express.static(__dirname + "/public"));
-app.use(bodyParser.urlencoded({ extended:false }));
+app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + 'index..php'));
 require('./server/config/passport')(passport);
 app.use(cookieParser());
-app.set('view engine', 'jade');
-// app.use(bodyParser.urlencoded({extended: false}));
 app.use(session({secret: 'meomeomeo',
 				 saveUninitialized: true,
 				 resave: true}));
 
 app.use(passport.initialize());
 app.use(passport.session());
-// app.get('/*', function(req, res) {
-//     res.sendFile(path.join(__dirname + '/dist/index.html'));
-//   });
+
 // REQUIRE ROUTER
 const nhanvienRouter = require(path.join(__dirname, "/server/router/nhanvien.router"));
 const nguoidungRouter = require(path.join(__dirname, "/server/router/nguoidung.router"));
